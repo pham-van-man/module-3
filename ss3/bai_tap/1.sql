@@ -56,3 +56,43 @@ VALUES
 (1, 1, 8, 1),
 (1, 2, 10, 2),
 (2, 1, 12, 1);
+--------------------
+SELECT 
+    *
+FROM
+    student
+WHERE
+    student_name LIKE 'h%';
+--------------------
+SELECT 
+    *
+FROM
+    class
+WHERE
+    start_date >= '2024-12-01 00:00:00'
+        AND start_date < '2024-12-31 00:00:00';
+--------------------
+SELECT 
+    *
+FROM
+    subject
+WHERE
+    credit BETWEEN 3 AND 5;
+--------------------
+SET SQL_SAFE_UPDATES = 0;
+UPDATE student 
+SET 
+    class_id = 2
+WHERE
+    student_name = 'hung';
+SET SQL_SAFE_UPDATES = 1;
+--------------------
+SELECT 
+    student_name, sub_name, mark
+FROM
+    mark
+        JOIN
+    subject ON subject.sub_id = mark.sub_id
+        JOIN
+    student ON student.student_id = student.student_id
+ORDER BY mark ASC , student.student_name DESC;

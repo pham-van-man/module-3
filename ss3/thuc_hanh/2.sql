@@ -56,3 +56,43 @@ VALUES
 (1, 1, 8, 1),
 (1, 2, 10, 2),
 (2, 1, 12, 1);
+SELECT *
+FROM Student;
+SELECT *
+FROM Student
+WHERE Status = true;
+SELECT *
+FROM Subject
+WHERE Credit < 10;
+SELECT 
+    S.student_id, S.student_name, C.class_name
+FROM
+    Student S
+        JOIN
+    Class C ON S.class_id = C.class_id;
+SELECT 
+    S.student_id, S.student_name, C.class_name
+FROM
+    Student S
+        JOIN
+    Class C ON S.class_id = C.class_id
+WHERE
+    C.class_name = 'A1';
+SELECT 
+    S.student_id, S.student_name, Sub.sub_name, M.Mark
+FROM
+    Student S
+        JOIN
+    Mark M ON S.student_id = M.student_id
+        JOIN
+    Subject Sub ON M.sub_id = Sub.sub_id;
+SELECT 
+    S.student_id, S.student_name, Sub.sub_name, M.Mark
+FROM
+    Student S
+        JOIN
+    Mark M ON S.student_id = M.student_id
+        JOIN
+    Subject Sub ON M.sub_id = Sub.sub_id
+WHERE
+    Sub.sub_name = 'CF';
